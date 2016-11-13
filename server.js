@@ -1,4 +1,5 @@
-var io = require('socket.io').listen(3000);
+var port = process.env.PORT || 8080;
+var io = require('socket.io').listen(port);
 
 io.on('connection', function(socket) {
   console.log('connected');
