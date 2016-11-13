@@ -1,4 +1,4 @@
-var port = process.env.PORT || 8080;
+var port = 8080;
 var io = require('socket.io').listen(port);
 console.log('port: ' + port);
 io.on('connection', function(socket) {
