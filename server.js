@@ -1,22 +1,37 @@
-var server_port = process.env.OPENSHIFT_NODEJS_PORT || 8080
-var server_ip_address = process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1'
-var app = require('express')();
-var http = require('http').Server(app);
-
-app.get('/', function(req, res) {
-    res.send('<h1>Hello world</h1>');
-});
-//We need a function which handles requests and send response
-function handleRequest(request, response){
-    response.end('It Works!! Path Hit: ' + request.url);
-}
-
-http.listen(server_port, server_ip_address, function () {
-  console.log( "Listening on " + server_ip_address + ", port " + server_port )
-});
-
-var io = require('socket.io').listen(server);
+var io = require('socket.io').listen(443);
 
 io.on('connection', function(socket) {
   console.log('connected');
+  socket.on('create', function(data) {
+    var username = data.username;
+    function makeid() {
+      var text = "";
+      var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+      for( var i=0; i < 6; i++ ) {
+        text += possible.charAt(Math.floor(Math.random() * possible.length));
+      }
+      return text;
+    }
+    var room = makeid();
+    socket.join(room);
+    socket.emit('roomShow', {room: room});
+    console.log(username + ' created ' + room);
+  });
+  socket.on('join', function(data) {
+    console.log('join');
+    var room = data.room;
+    var username = data.username;
+    socket.join(room);
+
+    console.log(username + ' joined ' + room);
+    socket.emit('roomShow', {room: room});
+    io.to(room).emit('player', {username: username, socket: socket.id});
+    console.log('player');
+  });
+  socket.on('sendPlayers', function(data) {
+    socket.broadcast.to(data.socket).emit('playerList', {players: data.players});
+  });
+  socket.on('startGame', function(data) {
+    var winner = io.sockets.adapter
+  });
 });
