@@ -32,6 +32,9 @@ io.on('connection', function(socket) {
   socket.on('sendPlayers', function(data) {
     socket.broadcast.to(data.socket).emit('playerList', {players: data.players});
   });
+  socket.on('sendMessage', function(data) {
+    socket.broadcast.to(data.room).emit('chatMessage', {message: data.message, username: data.username});
+  });
   socket.on('startGame', function(data) {
     var winner = io.sockets.adapter
   });
