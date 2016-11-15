@@ -2,6 +2,8 @@ var port = 8080;
 var io = require('socket.io').listen(port);
 console.log('port: ' + port);
 io.on('connection', function(socket) {
+  var room = "";
+  var username = "";
   console.log('connected');
   socket.on('create', function(data) {
     var username = data.username;
@@ -37,5 +39,8 @@ io.on('connection', function(socket) {
   });
   socket.on('startGame', function(data) {
     var winner = io.sockets.adapter
+  });
+  socket.on('disonnect', function() {
+    socket.broadcast.to(room).emit('playerDisconnect', {username: username, rip: true});
   });
 });
