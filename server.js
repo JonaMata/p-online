@@ -40,7 +40,7 @@ io.on('connection', function(socket) {
   socket.on('startGame', function(data) {
     var winner = io.sockets.adapter
   });
-  socket.on('disonnect', function() {
+  socket.on('disconnect', function() {
     socket.broadcast.to(room).emit('playerDisconnect', {username: username, rip: true});
   });
 });
