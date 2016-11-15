@@ -20,7 +20,7 @@ io.on('connection', function(socket) {
   });
   socket.on('join', function(data) {
     console.log('join');
-    var room = data.room;
+    var room = data.room.toUpperCase();
     var username = data.username;
     socket.join(room);
 
