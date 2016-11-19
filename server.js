@@ -1,5 +1,21 @@
-var port = 8080;
-var io = require('socket.io').listen(port);
+//Setup ip adress and port
+var ipaddress ;
+
+function initIPAdress() {
+    var adr = process.env.OPENSHIFT_NODEJS_IP;
+    if (typeof adr === "undefined") {
+            //  Log errors on OpenShift but continue w/ 127.0.0.1 - this
+            //  allows us to run/test the app locally.
+            console.warn('No OPENSHIFT_NODEJS_IP var, using localhost');
+            adr = 'localhost';
+    }
+
+    ipaddress = adr;
+}
+
+var port      = process.env.OPENSHIFT_NODEJS_PORT || 8080;
+
+var io = require('socket.io').listen(port, ipadress);
 console.log('port: ' + port);
 io.on('connection', function(socket) {
   var room = "";
