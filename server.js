@@ -1,6 +1,3 @@
-//Setup ip adress and port
-var ipaddress ;
-
 function initIPAdress() {
     var adr = process.env.OPENSHIFT_NODEJS_IP;
     if (typeof adr === "undefined") {
@@ -10,12 +7,12 @@ function initIPAdress() {
             adr = 'localhost';
     }
 
-    ipaddress = adr;
+    return adr;
 }
 
 var port      = process.env.OPENSHIFT_NODEJS_PORT || 8080;
 
-var io = require('socket.io').listen(port, ipadress);
+var io = require('socket.io').listen(port, initIPAdress());
 console.log('port: ' + port);
 io.on('connection', function(socket) {
   var room = "";
