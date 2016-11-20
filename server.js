@@ -12,7 +12,7 @@ function initIPAdress() {
 
 var port      = process.env.OPENSHIFT_NODEJS_PORT || 8080;
 
-var io = require('socket.io').listen(port, initIPAdress());
+var io = require('socket.io')io.set('origins', 'http://p-online.juanto3.me').listen(port, initIPAdress());
 console.log('port: ' + port);
 io.on('connection', function(socket) {
   var room = "";
