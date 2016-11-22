@@ -12,18 +12,8 @@ function initIPAdress() {
 
 var port      = process.env.OPENSHIFT_NODEJS_PORT || 8080;
 
-var http = require('http'),
-    socketio = require('socket.io'),
-    options = {};
+var io = require('socket.io')(port);
 
-var app = http.createServer(options, handler),
-    io = socketio(app, {
-        log: false,
-        agent: false,
-        origins: '*:*'
-    });
-
-app.listen(port);
 console.log('port: ' + port);
 io.on('connection', function(socket) {
   var room = "";
