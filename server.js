@@ -3,7 +3,7 @@ var http = require('http').Server(app);
 var port = process.env.PORT || 8080;
 
 app.get('/', function(req, res){
-  res.sendfile( __dirname + 'web/index.html');
+  res.sendfile( __dirname + '/web/index.html');
 });
 
 app.use('/static', express.static(path.join(__dirname, 'web')))
