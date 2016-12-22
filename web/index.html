@@ -1,0 +1,127 @@
+<HTML>
+  <head>
+    <title>P Online</title>
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="./bootstrap.css">
+
+
+
+    <script src="tether.min.js"></script>
+    <script src="jquery-3.1.1.js"></script>
+    <script src="bootstrap.js"></script>
+	<script src="socket.io-1.4.5.js"></script>
+  <script src="https://juanto3.me/connection.js"></script>
+ 	<link rel="stylesheet" href="./style.css" type="text/css">
+  </head>
+  <body>
+    <nav class="navbar navbar-fixed-top navbar-light">
+      <h1 class="shaky" style="text-align: center;">P Online!</h1>
+    </nav>
+    <div id="offline">
+      <p>I needs some of those awesome internet connections to work, please give me one and try again.</p>
+    </div>
+    <div id="online">
+    <ul class="nav nav-tabs" role="tablist">
+      <li class="nav-item">
+        <a class="nav-link active" data-toggle="tab" href="#home" role="tab">Game</a>
+      </li>
+    <li id="chatButton" class="nav-item">
+      <a class="nav-link" data-toggle="tab" href="#chat" role="tab">Chat</a>
+    </li>
+  </ul>
+
+  <div class="tab-content">
+    <div class="tab-pane active" id="home" role="tabpanel">
+      <div id="lobby">
+
+        <div class="container">
+          <div class="row">
+        <div class="col-xs-12 col-sm-10 col-md-6 offset-sm-1 offset-md-3">
+
+          <h3 style="text-align: center;">Join or create a room to start playing.</h3>
+        <div class="form-group">  <input type="text" class="form-control" id="username" placeholder="Username"></div>
+          <div class="form-group">
+          <input type="text" class="form-control" id="room" placeholder="Room Name">
+        </div>
+          <div class="row">
+            <div class="col-xs-6 col-sm-6 col-md-6">
+              <div class="form-group">
+          <button id="join" class="btn btn-primary btn-block">Join</button>
+        </div>
+        </div>
+        <div class="col-xs-6 col-sm-6 col-md-6">
+          <div class="form-group">
+          <button id="create" class="btn btn-primary btn-block">Create Room</button>
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
+
+
+
+
+      </div>
+      <div id="game">
+
+        <div class="container">
+          <div class="row">
+        <div class="col-xs-12 col-sm-10 col-md-6 offset-sm-1 offset-md-3">
+          <div class="row"><div class="col-xs-6">
+          <h3>Players:</h3><ul id="playerList"></ul></div><div class="col-xs-6">
+          <h3>Room:</h3>
+          <p id="roomSpan"></p>
+          </div>
+          </div>
+
+
+
+        </div>
+        </div>
+        </div>
+
+        <nav class="navbar navbar-fixed-bottom navbar-light bg-faded">
+        <button id="start" class="btn btn-primary">Start Game</button>
+        <button id="leave" class="btn btn-danger">Leave Game</button>
+        </nav>
+
+
+      </div>
+    </div>
+    <div class="tab-pane" id="chat" role="tabpanel">
+      <div class="container">
+        <div class="row">
+      <div class="col-xs-12 col-sm-10 col-md-6 offset-sm-1 offset-md-3">
+      <div class="row">
+        <div class="col-xs-12">
+        <div class="card">
+          <div class="card-block">
+      <ul id="chatBox"></ul>
+      </div>
+      <div class="card-footer">
+        <form onsubmit="return sendChat();">
+      <div class="input-group">
+      <input id="messageBox" type="text" class="form-control" placeholder="Message">
+      <div class="input-group-btn">
+      <button type="submit" id="send" class="btn btn-primary">Send</button>
+      </div>
+      </div>
+      </form>
+      </div>
+      </div>
+      </div>
+      </div>
+    </div>
+  </div>
+</div>
+<nav class="navbar navbar-fixed-bottom navbar-light bg-faded">
+<button id="start" class="btn btn-primary">Start Game</button>
+<button id="leave" class="btn btn-danger">Leave Game</button>
+</nav>
+    </div>
+  </div>
+</div>
+    <script src="script.js"></script>
+  </body>
+</HTML>

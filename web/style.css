@@ -1,0 +1,109 @@
+body {
+	padding-top: 70px;
+	padding-bottom: 70px;
+}
+
+.tab-pane {
+	padding-top: 10px;
+}
+
+#online {
+	display: none;
+}
+#game {
+	display: none;
+}
+
+#chatButton {
+	display: none;
+}
+
+#chatBox {
+  position: relative;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: auto;
+  overflow: auto;
+  word-wrap: break-word;
+  padding: auto;
+  list-style-type: none;
+}
+
+@keyframes shake {
+	0%	{left: 0px; top: 0px; color: black;}
+	20%	{left: 2px; top: -2px; color: blue;}
+	40%	{left: -2px; top: 2px; color: green;}
+	60% {left: -2px; top: -2px; color: orange;}
+	80%	{left: 2px; top: 2px; color: red;}
+	100% {left: 0px; top: 0px; color: black;}
+}
+/*
+@-webkit-keyframes shake {
+	0%	{left: -5px; top: -5px;}
+	25%	{left: 5px; top: 5px;}
+	50%	{left: -5px; top: -5px;}
+	75%	{left: 5px; top: 5px;}
+}
+*/
+.shaky {
+	position: relative;
+	animation: shake 1s infinite;
+/*	-webkit-animation: shake 0.3s infinite;*/
+}
+
+
+@keyframes move {
+	100% {left: random(0, 300)px; top: random(0, 300)px;}
+}
+.move {
+	position: relative;
+}
+
+.move:hover {
+	animation: move 1s;
+	animation-fill-mode: forwards;
+}
+
+
+/*
+//scrollbar
+::-webkit-scrollbar {
+	width: 12px;
+}
+::-webkit-scrollbar-button {
+
+}
+::-webkit-scrollbar-track {
+	border-radius: 10px;
+}
+::-webkit-scrollbar-track-piece {
+
+}
+::-webkit-scrollbar-thumb {
+	border-radius: 10px;
+}
+::-webkit-scrollbar-corner {
+
+}
+::-webkit-resizer {
+
+}
+*/
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    background: #0275d8;
+}
