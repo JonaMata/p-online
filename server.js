@@ -2,7 +2,7 @@ var app = require('express')();
 var http = require('http').Server(app);
 var port = process.env.PORT || 8080;
 
-app.use('/static', express.static(path.join(__dirname, 'web')))
+app.use('/', express.static(path.join(__dirname, 'web')))
 
 http.listen(port, function(){
   console.log('listening on *: ' + port);
