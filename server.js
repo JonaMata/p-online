@@ -1,9 +1,10 @@
 var app = require('express')();
 var http = require('http').Server(app);
 
-app.get('/', function(req, res){
-  res.send('<h1>Hello world</h1>');
-});
+app.get(/^(.+)$/, function(req, res){ 
+     console.log('static file request : ' + req.params);
+     res.sendfile( __dirname + req.params[0]); 
+ });
 
 http.listen(80, function(){
   console.log('listening on *:80');
