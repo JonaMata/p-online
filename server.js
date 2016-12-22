@@ -3,7 +3,7 @@ var http = require('http').Server(app);
 
 app.get(/^(.+)$/, function(req, res){ 
      console.log('static file request : ' + req.params);
-     res.sendfile( __dirname + req.params[0]); 
+     res.sendfile( __dirname + "/web" + req.params[0]); 
  });
 
 http.listen(80, function(){
