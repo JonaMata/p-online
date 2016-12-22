@@ -1,10 +1,8 @@
 var app = require('express')();
 var http = require('http').Server(app);
 var port = process.env.PORT || 8080;
-app.get(/^(.+)$/, function(req, res){ 
-     console.log('static file request : ' + req.params);
-     res.sendfile( __dirname + "/web/" + req.params[0]); 
- });
+
+app.use(express.static('web'))
 
 http.listen(port, function(){
   console.log('listening on *: ' + port);
