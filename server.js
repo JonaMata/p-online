@@ -1,6 +1,6 @@
 var app = require('express')();
 var http = require('http').Server(app);
-var port = process.env.PORT || 8080;
+var port = 25565;
 
 app.use(express.static(__dirname + '/web'));
 
