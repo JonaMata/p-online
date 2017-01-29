@@ -1,15 +1,6 @@
-var app = require('express')();
-var http = require('http').Server(app);
 var port = 25565;
 
-app.use(express.static(__dirname + '/web'));
-
-http.listen(port, function(){
-  console.log('listening on *: ' + port);
-});
-
-
-var io = require('socket.io')(http);
+var io = require('socket.io')(port);
 
 console.log('port: ' + port);
 io.on('connection', function(socket) {
