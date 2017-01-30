@@ -19,6 +19,8 @@ io.on('connection', function(socket) {
     }
     var room = makeid();
     socket.join(room);
+    var eval(room) = {}
+    eval(room).push({socket:username});
     socket.emit('roomShow', {room: room});
     console.log(username + ' created ' + room);
   });
@@ -27,6 +29,7 @@ io.on('connection', function(socket) {
     var room = data.room.toUpperCase();
     var username = data.username;
     socket.join(room);
+    eval(room).push({socket:username});
 
     console.log(username + ' joined ' + room);
     socket.emit('roomShow', {room: room});
@@ -44,5 +47,6 @@ io.on('connection', function(socket) {
   });
   socket.on('disconnect', function() {
     io.to(room).emit('playerDisconnect', {username: username, rip: true});
+    delete eval(room)[socket];
   });
 });
