@@ -8,7 +8,7 @@ var index = fs.readFileSync('public/index.html');
 http.createServer(function (req, res) {
 
     res.writeHead(200, { 'Content-Type': 'text/html' });
-    res.end('Hello, world!');
+    res.end(index);
 
 }).listen(process.env.PORT || 8080);
 
