@@ -1,8 +1,16 @@
 var port = process.env.PORT || 8080;
 var http = require('http')
 var io = require('socket.io')(http);
+var fs = require('fs');
 
-http.listen(process.env.PORT || 8080);
+var index = fs.readFileSync('public/index.html');
+
+http.createServer(function (req, res) {
+
+    res.writeHead(200, { 'Content-Type': 'text/html' });
+    res.end('Hello, world!');
+
+}).listen(process.env.PORT || 8080);
 
 console.log('port: ' + port);
 io.on('connection', function(socket) {
