@@ -26,7 +26,7 @@ function start() {
 		}
 
 	}
-	socket = io.connect('http://p-server.azurewebsites.net');
+	socket = io();
 
 
 	function create(username) {

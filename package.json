@@ -9,7 +9,7 @@
   "author": "Juan To 3",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.10.2",
-    "socket.io": "^1.5.1"
+    "express": "^4.15.2",
+    "socket.io": "^1.7.4"
   }
 }
