@@ -2,12 +2,7 @@ var port = process.env.PORT || 8080;
 var http = require('http')
 var io = require('socket.io')(http);
 
-http.createServer(function (req, res) {
-
-    res.writeHead(200, { 'Content-Type': 'text/html' });
-    res.end('Hello, world!');
-
-}).listen(process.env.PORT || 8080);
+http.listen(process.env.PORT || 8080);
 
 console.log('port: ' + port);
 io.on('connection', function(socket) {
