@@ -10,7 +10,7 @@ http.createServer(function (req, res) {
     res.writeHead(200, { 'Content-Type': 'text/html' });
     res.end(index);
 
-}).listen(process.env.PORT || 8080);
+}).listen(port);
 
 console.log('port: ' + port);
 io.on('connection', function(socket) {
