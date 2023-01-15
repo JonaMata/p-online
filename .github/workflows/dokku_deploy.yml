@@ -1,0 +1,21 @@
+on:
+  push:
+    branches:
+     - server
+     
+jobs:
+  dokku:
+    name: Deploy to dokku
+    runs-on: ubuntu-latest
+    steps:
+     - name: Cloning repo
+       uses: actions/checkout@v3
+       with:
+        fetch-depth: 0
+     - name: Dokku
+       uses: dokku/github-action@v1.4.0
+       with:
+        branch: server
+        git_remote_url: ssh://dokku@jntn.dev/p-online
+        ssh_private_key: ${{ secrets.DOKKU_SSH_KEY }}
+        trace: 1
